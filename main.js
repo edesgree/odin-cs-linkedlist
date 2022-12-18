@@ -11,7 +11,7 @@ class LinkedList {
     this.tail = null;
     this.length = 0;
   }
-
+  // adds a new node containing value to the end of the list
   append(value) {
     const newNode = new Node(value);
     if (this.head === null) {
@@ -23,30 +23,32 @@ class LinkedList {
     }
     this.length++;
   }
-
+  // TODO adds a new node containing value to the start of the list
   prepend(value) {
     const newNode = new Node(value);
-    if (this.head === null) {
-      this.head = newNode;
-      this.tail = newNode;
-    } else {
-      this.head.next = this.head;
-      this.head = newNode;
-    }
-    this.length++;
-  }
 
+    newNode.next = this.head;
+    this.head = newNode;
+    this.length++;
+    if (this.tail === null) {
+      this.tail = newNode;
+    }
+  }
+  // returns the total number of nodes in the list
   getSize() {
     return this.length;
   }
+  // returns the first node in the list
   getHead() {
     return this.head;
   }
+  // returns the last node in the list
   getTail() {
     return this.tail;
   }
+  // removes the last element from the list
+
   pop() {
-    //delete last node
     if (this.head === null) {
       return;
     }
@@ -71,6 +73,34 @@ class LinkedList {
     //update the length of list
     this.length--;
     console.log('pop');
+  }
+  // returns true if the passed in value is in the list and otherwise returns false.
+  contains(lookfor) {
+    if (this.head === null) {
+      return false;
+    }
+    let currentNode = this.head;
+    let previousNode = null;
+    while (currentNode.next !== null) {
+      previousNode = currentNode;
+
+      if (currentNode.value === lookfor) return true;
+      currentNode = currentNode.next;
+    }
+    return false;
+  }
+
+  //returns the index of the node containing value, or null if not found.
+  find(lookfor) {
+    let currentNode = this.head;
+    let index = 0;
+
+    while (currentNode !== null) {
+      if (currentNode.value === lookfor) return index;
+      currentNode = currentNode.next;
+      index++;
+    }
+    return false;
   }
 }
 
