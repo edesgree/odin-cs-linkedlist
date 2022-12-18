@@ -102,6 +102,16 @@ class LinkedList {
     }
     return false;
   }
+  // returns the node at the given index
+  atIndex(index) {
+    let currentNode = this.head;
+    let i = 0;
+    while (currentNode !== null) {
+      if (i === index) return currentNode.value;
+      currentNode = currentNode.next;
+      i++;
+    }
+  }
 }
 
 const mylist = new LinkedList();
