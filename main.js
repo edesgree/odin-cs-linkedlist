@@ -112,6 +112,52 @@ class LinkedList {
       i++;
     }
   }
+
+  // represents a LinkedList objects as strings
+  // ( value ) -> ( value ) -> ( value ) -> null
+
+  toString() {
+    let string = '';
+    let currentNode = this.head;
+
+    while (currentNode !== null) {
+      string += ` ( ${currentNode.value} ) `;
+      if (currentNode.next !== null) {
+        string += ` -> `;
+      }
+      currentNode = currentNode.next;
+    }
+    if (currentNode === null) {
+      string += `-> null`;
+    }
+    return string;
+  }
+  // inserts a new node with the provided value at the given index.
+  insertAt(value, index) {
+    if (index < 0 || index > this.length) {
+      return;
+    }
+
+    const newNode = new Node(value);
+
+    if (index === 0) {
+      newNode.next = this.head;
+      this.head = newNode;
+    } else {
+      let currentNode = this.head;
+      let previousNode = null;
+      let i = 0;
+      while (i < index) {
+        previousNode = currentNode;
+        currentNode = currentNode.next;
+        i++;
+      }
+
+      newNode.next = currentNode;
+      previousNode.next = newNode;
+    }
+    this.length++;
+  }
 }
 
 const mylist = new LinkedList();
