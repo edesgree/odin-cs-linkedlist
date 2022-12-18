@@ -137,7 +137,6 @@ class LinkedList {
     if (index < 0 || index > this.length) {
       return;
     }
-
     const newNode = new Node(value);
 
     if (index === 0) {
@@ -157,6 +156,41 @@ class LinkedList {
       previousNode.next = newNode;
     }
     this.length++;
+  }
+
+  // removes the node at the given index
+  removeAt(index) {
+    if (index < 0 || index > this.length) {
+      return;
+    }
+    //if empty
+    if (this.head === null) {
+      return;
+    }
+    // if one node exists
+    if (this.head === this.tail && index == 0) {
+      this.head = null;
+      this.tail = null;
+      this.length = 0;
+      return;
+    }
+
+    if (index === 0) {
+      this.head = this.head.next;
+    } else {
+      let currentNode = this.head;
+      let previousNode = null;
+      let i = 0;
+
+      while (i < index) {
+        previousNode = currentNode;
+        currentNode = currentNode.next;
+        i++;
+      }
+
+      previousNode.next = currentNode.next;
+    }
+    this.length--;
   }
 }
 
