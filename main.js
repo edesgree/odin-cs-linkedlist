@@ -11,6 +11,7 @@ class LinkedList {
     this.tail = null;
     this.length = 0;
   }
+
   // adds a new node containing value to the end of the list
   append(value) {
     const newNode = new Node(value);
@@ -23,7 +24,8 @@ class LinkedList {
     }
     this.length++;
   }
-  // TODO adds a new node containing value to the start of the list
+
+  // adds a new node containing value to the start of the list
   prepend(value) {
     const newNode = new Node(value);
 
@@ -34,20 +36,23 @@ class LinkedList {
       this.tail = newNode;
     }
   }
+
   // returns the total number of nodes in the list
   getSize() {
     return this.length;
   }
+
   // returns the first node in the list
   getHead() {
     return this.head;
   }
+
   // returns the last node in the list
   getTail() {
     return this.tail;
   }
-  // removes the last element from the list
 
+  // removes the last element from the list
   pop() {
     if (this.head === null) {
       return;
@@ -74,6 +79,7 @@ class LinkedList {
     this.length--;
     console.log('pop');
   }
+
   // returns true if the passed in value is in the list and otherwise returns false.
   contains(lookfor) {
     if (this.head === null) {
@@ -102,6 +108,7 @@ class LinkedList {
     }
     return false;
   }
+
   // returns the node at the given index
   atIndex(index) {
     let currentNode = this.head;
@@ -115,7 +122,6 @@ class LinkedList {
 
   // represents a LinkedList objects as strings
   // ( value ) -> ( value ) -> ( value ) -> null
-
   toString() {
     let string = '';
     let currentNode = this.head;
@@ -132,6 +138,7 @@ class LinkedList {
     }
     return string;
   }
+
   // inserts a new node with the provided value at the given index.
   insertAt(value, index) {
     if (index < 0 || index > this.length) {
